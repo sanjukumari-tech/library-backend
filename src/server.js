@@ -7,12 +7,12 @@ const router = require('./routes/bookRoutes');
 const cors = require("cors");
 
 
-app.use(cors());
+
 dotenv.config();
 connectDB();
 
 const app = express();
-
+app.use(cors());
 // Body Parser Middleware
 app.use(express.json());
 
