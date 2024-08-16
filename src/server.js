@@ -12,10 +12,14 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors({
-  origin: 'http://localhost:5173/', // Replace this with the frontend URL
-  credentials: true, // If sending cookies/auth tokens, enable credentials
-}));
+const corsOptions = {
+  origin: 'http://localhost:3000', // Add your frontend URL if deployed
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow headers like 'Content-Type'
+  credentials: true, // If you're sending cookies or auth tokens
+};
+
+app.use(cors(corsOptions));
 // Body Parser Middleware
 app.use(express.json());
 
